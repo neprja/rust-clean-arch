@@ -1,0 +1,20 @@
+receivers:
+  otlp:
+    protocols:
+      grpc:
+
+processors:
+  batch:
+
+exporters:
+  otlp:
+    endpoint: tempo-eu-west-0.grafana.net:443
+    headers:
+      authorization: Basic MzE5ODU4OmV5SnJJam9pWkdVeE5tUTNZbU5qTTJFeVlXSTNZakF3TWpneFpETTBPVGM0TWpNMk5UVTRNV1EzTWpkaE5DSXNJbTRpT2lKbWFYSnpkQ0lzSW1sa0lqbzNOREk1T1RoOQ==
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [otlp]
